@@ -1,0 +1,25 @@
+.formComment {
+  resize: none;
+  width: 100%;
+  border-radius: 5px;
+  margin: 30px 0;
+}
+
+.submitComment {
+  background: #786789;
+}
+
+.submitComment:disabled {
+  background: #b9b9b9;
+}
+
+.comment {
+  resize: none;
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.title {
+  margin: 30px 0;
+}

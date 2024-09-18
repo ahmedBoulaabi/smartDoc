@@ -1,0 +1,502 @@
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-6/12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
+      >
+        <div class="rounded-t mb-0 px-6 py-6">
+          <div class="text-center mb-3">
+            <h6 class="text-blueGray-500 text-sm font-bold">Créer un compte</h6>
+          </div>
+          <hr class="mt-6 border-b-1 border-blueGray-300" />
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <form [formGroup]="registerForm">
+            <div class="selectRole" *ngIf="step === 0">
+              <mat-button-toggle-group
+                [formControl]="registerFormControls.role"
+                class="optionsContainer"
+              >
+                <mat-button-toggle
+                  value="patient"
+                  class="offerBox btn btn-primary"
+                  (click)="nextStep()"
+                >
+                  Patient
+                </mat-button-toggle>
+                <mat-button-toggle
+                  value="medecin"
+                  class="offerBox btn btn-primary"
+                  (click)="nextStep()"
+                >
+                  Médecin
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+            <div class="userInfo" *ngIf="step > 0">
+              <div class="patientInfo" *ngIf="role == 'patient'">
+                <div class="flex" style="gap: 20px">
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Nom</mat-label>
+                    <input
+                      matInput
+                      id="firstName"
+                      type="text"
+                      class="form-control"
+                      placeholder="Nom"
+                      formControlName="firstName"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.firstName.errors }"
+                    />
+                    <div *ngIf="submitted && registerFormControls.firstName.errors" class="invalid-feedback">
+                      <div *ngIf="registerFormControls.firstName.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Prenom</mat-label>
+                    <input
+                      matInput
+                      id="lastName"
+                      type="text"
+                      class="form-control"
+                      placeholder="Prenom"
+                      formControlName="lastName"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.lastName.errors }"
+                      />
+                      <div *ngIf="submitted && registerFormControls.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.lastName.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                  </mat-form-field>
+                </div>
+                <div class="flex" style="gap: 20px">
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Address</mat-label>
+                    <input
+                      matInput
+                      id="address"
+                      type="text"
+                      class="form-control"
+                      placeholder="Address"
+                      formControlName="address"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.address.errors }"
+                      />
+                      <div *ngIf="submitted && registerFormControls.address.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.address.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Telephone</mat-label>
+                    <input
+                      matInput
+                      id="phone"
+                      type="number"
+                      class="form-control"
+                      placeholder="Telephone"
+                      formControlName="phone"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.phone.errors }"
+                      />
+                      <div *ngIf="submitted && registerFormControls.phone.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.phone.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                  </mat-form-field>
+                </div>
+                <div class="flex" style="gap: 20px">
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Email</mat-label>
+                    <input
+                      matInput
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      formControlName="email"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.email.errors }"
+                      />
+                      <div *ngIf="submitted && registerFormControls.email.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.email.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                  </mat-form-field>
+
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      id="password"
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      formControlName="password"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.password.errors }"
+                      />
+                      <div *ngIf="submitted && registerFormControls.password.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.password.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                  </mat-form-field>
+                </div>
+                <div class="flex" style="gap: 20px">
+                  <mat-form-field
+                    appearance="fill"
+                    style="width: calc(50% - 10px)"
+                  >
+                    <mat-label>Confirmer mot de pass</mat-label>
+                    <input
+                      matInput
+                      id="cpassword"
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirme mot de pass"
+                      formControlName="cpassword"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted && registerFormControls.cpassword.errors }"
+                      />
+                      <div *ngIf="submitted && registerFormControls.cpassword.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.cpassword.errors.required"><p style="color:red">le champ est obligatoire</p></div>
+                        <div *ngIf="registerFormControls.cpassword.errors.mustMatch"><p style="color:red">Password and confirm not match</p></div>  
+                      </div>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="medecinContent" *ngIf="role == 'medecin'">
+                <div class="medecinPackage" *ngIf="step === 1">
+                  <mat-button-toggle-group
+                    [formControl]="registerFormControls.medecinPackage"
+                    class="optionsContainer"
+                  >
+                    <mat-button-toggle
+                      value="basic"
+                      class="offerBox btn btn-primary"
+                      (click)="nextStep()"
+                      >Basic</mat-button-toggle
+                    >
+                    <mat-button-toggle
+                      value="gold"
+                      class="offerBox btn btn-primary"
+                      (click)="nextStep()"
+                      >Gold</mat-button-toggle
+                    >
+                  
+                  </mat-button-toggle-group>
+                </div>
+                <div class="medecinInfo" *ngIf="step === 2">
+                  <div class="flex" style="gap: 20px">
+                    <div style="width: 100%">
+                    <mat-form-field
+                      appearance="fill"
+                    
+                    >
+                      <mat-label>Nom</mat-label>
+                      <input
+                        matInput
+                        id="firstName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Nom"
+                        formControlName="firstName"
+                        required
+                        [ngClass]="{ 'is-invalid': submitted && registerFormControls.firstName.errors }"
+                        />
+                        <div *ngIf="submitted && registerFormControls.firstName.errors" class="invalid-feedback">
+                          <div *ngIf="registerFormControls.firstName.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                    </mat-form-field>
+                  </div>
+                  <div style="width: 100%">
+                    <mat-form-field
+                      appearance="fill"
+                    
+                    >
+                      <mat-label>Prenom</mat-label>
+                      <input
+                        matInput
+                        id="lastName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Prenom"
+                        formControlName="lastName"
+                        required
+                        [ngClass]="{ 'is-invalid': submitted && registerFormControls.lastName.errors }"
+                        />
+                        <div *ngIf="submitted && registerFormControls.lastName.errors" class="invalid-feedback">
+                          <div *ngIf="registerFormControls.lastName.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                    </mat-form-field>
+                  </div>
+                  </div>
+                  <div class="flex" style="gap: 20px">
+                    <div style="width: 100%">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Telephone</mat-label>
+                        <input
+                          matInput
+                          id="phone"
+                          type="number"
+                          class="form-control"
+                          placeholder="Telephone"
+                          formControlName="phone"
+                          required
+                          [ngClass]="{ 'is-invalid': submitted && registerFormControls.phone.errors }"
+                          />
+                          <div *ngIf="submitted && registerFormControls.phone.errors" class="invalid-feedback">
+                            <div *ngIf="registerFormControls.phone.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                      </mat-form-field>
+                    </div>
+                    <div style="width: 100%">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Fax</mat-label>
+                        <input
+                          matInput
+                          id="fax"
+                          type="number"
+                          class="form-control"
+                          placeholder="Fax"
+                          formControlName="fax"
+                          required
+                          
+                          />
+                          
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="flex" style="gap: 20px">
+                    <div style="width: 100%">
+                      <mat-form-field appearance="fill">
+                        <mat-label>URL</mat-label>
+                        <input
+                          matInput
+                          id="url"
+                          type="text"
+                          class="form-control"
+                          placeholder="url"
+                          formControlName="url"
+                          
+                        />
+                      </mat-form-field>
+                    </div>
+
+                    <div style="width: 100%">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <input
+                          matInput
+                          id="address"
+                          type="text"
+                          class="form-control"
+                          placeholder="Address"
+                          formControlName="address"
+                          required
+                          [ngClass]="{ 'is-invalid': submitted && registerFormControls.address.errors }"
+                          />
+                          <div *ngIf="submitted && registerFormControls.address.errors" class="invalid-feedback">
+                            <div *ngIf="registerFormControls.address.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="flex" style="gap: 20px">
+                    <div style="width: 100%">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input
+                          matInput
+                          id="email"
+                          type="email"
+                          class="form-control"
+                          placeholder="Email"
+                          formControlName="email"
+                          required
+                          [ngClass]="{ 'is-invalid': submitted && registerFormControls.email.errors }"
+                          />
+                          <div *ngIf="submitted && registerFormControls.email.errors" class="invalid-feedback">
+                            <div *ngIf="registerFormControls.email.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                      </mat-form-field>
+                    </div>
+                    <div style="width: 100%">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input
+                          matInput
+                          id="password"
+                          type="password"
+                          class="form-control"
+                          placeholder="Password"
+                          formControlName="password"
+                          required
+                          [ngClass]="{ 'is-invalid': submitted && registerFormControls.password.errors }"
+                          />
+                          <div *ngIf="submitted && registerFormControls.password.errors" class="invalid-feedback">
+                            <div *ngIf="registerFormControls.password.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                      </mat-form-field>
+                    </div>
+                    
+                  </div>
+                  <div class="flex" style="gap: 20px">
+                    <mat-form-field
+                      appearance="fill"
+                      style="width: calc(50% - 10px)"
+                    >
+                      <mat-label>Confirmer mot de pass</mat-label>
+                      <input
+                        matInput
+                        id="cpassword"
+                        type="password"
+                        class="form-control"
+                        placeholder="Confirme mot de pass"
+                        formControlName="cpassword"
+                        required
+                        [ngClass]="{ 'is-invalid': submitted && registerFormControls.cpassword.errors }"
+                        />
+                        <div *ngIf="submitted && registerFormControls.cpassword.errors" class="invalid-feedback">
+                          <div *ngIf="registerFormControls.cpassword.errors.required"><p style="color:red">le champ est obligatoire</p></div>
+                          <div *ngIf="registerFormControls.cpassword.errors.mustMatch"><p style="color:red">Password and confirm not match</p></div>  
+                        </div>
+                    </mat-form-field>
+                  </div>
+
+
+
+
+                  <div class="flex" style="gap: 20px">
+                    <div style="width: 100%">
+                      <div appearance="fill">
+                  
+                        <select
+                        name="speciality"
+                        id="speciality"
+                        class="speciality"
+                        formControlName="speciality"
+                        required
+                        [ngClass]="{ 'is-invalid': submitted && registerFormControls.speciality.errors }"
+                      >
+                      <div *ngIf="submitted && registerFormControls.speciality.errors" class="invalid-feedback">
+                        <div *ngIf="registerFormControls.speciality.errors.required"><p style="color:red">le champ est obligatoire</p></div></div>
+                        <option value="" selected disabled hidden>
+                          Specialité
+                        </option>
+                        <option value="">Tous</option>
+                        <option
+                          *ngFor="let speciality of specialities"
+                          [value]="speciality"
+                        >
+                          {{ speciality }}
+                        </option>
+                      </select>
+                    </div>
+                    </div>
+                   
+                  </div>
+
+                  <br/>
+
+                  <mat-label *ngIf="isMedecinPackage == 'gold'">Voulez-vous entrer des heures modifiées</mat-label>
+                  <mat-slide-toggle *ngIf="isMedecinPackage == 'gold'" formControlName="isChangingTime">
+                  </mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <table class="mt-6" *ngIf="role == 'medecin' && step === 2 && isMedecinPackage == 'gold'">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Matin:</th>
+                <th>Après-midi:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let time of times; let i = index">
+                <th scope="row">{{ time.day }}</th>
+                <td>
+                  <div>
+                    <input
+                      type="time"
+                      min="00:00"
+                      max="12:00"
+                      [(ngModel)]="time.morning.start"
+                      [disabled]="time.morning.isDisabled || !isChangingTime"
+                    />
+                    <!-- [value]="time.morning.start" -->
+                    <input
+                      type="time"
+                      min="12:00"
+                      max="00:00"
+                      [(ngModel)]="time.morning.end"
+                      [disabled]="time.morning.isDisabled || !isChangingTime"
+                    />
+                    <mat-checkbox
+                      (change)="disableTime($event, i, true)"
+                      [disabled]="!isChangingTime"
+                      >nV</mat-checkbox
+                    >
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <input
+                      type="time"
+                      min="00:00"
+                      max="12:00"
+                      [(ngModel)]="time.afternoon.start"
+                      [disabled]="time.afternoon.isDisabled || !isChangingTime"
+                    />
+                    <input
+                      type="time"
+                      min="12:00"
+                      max="00:00"
+                      [(ngModel)]="time.afternoon.end"
+                      [disabled]="time.afternoon.isDisabled || !isChangingTime"
+                    />
+                    <mat-checkbox
+                      (change)="disableTime($event, i, false)"
+                      [disabled]="!isChangingTime"
+                      >nV</mat-checkbox
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="stepActions" *ngIf="step > 0">
+            <span>
+              <button
+                class="bg-white hover:bg-gray-100 text-gray-800 py-2 px-4 border border-gray-400 rounded previous"
+                (click)="previousStep()"
+              >
+                Précédent
+              </button>
+            </span>
+            <button
+              type="submit"
+              class="text-white font-bold py-2 px-4 rounded submit"
+              *ngIf="
+                (role == 'patient' && step === 1) ||
+                (role == 'medecin' && step === 2)
+              "
+              (click)="handleSubmit()"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

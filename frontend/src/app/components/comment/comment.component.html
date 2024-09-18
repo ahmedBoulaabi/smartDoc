@@ -1,0 +1,98 @@
+
+
+<form
+[formGroup]="formComment"
+(ngSubmit)="handleSubmit($event)"
+*ngIf="isConnected === 3"
+
+class="formComment"
+>
+<textarea
+  name="comment"
+  id="replcommenty"
+  class="comment"
+  cols="30"
+  rows="3"
+  placeholder="Laisser un commentaire"
+  formControlName="commentaire"
+></textarea>
+
+
+<label class="btn btn-default">   
+  Selectionner Image
+  <input type="file" (change)="selectBanner($event)" />
+</label>
+<div *ngIf="progressBanneer" class="mb-2">
+  <span>{{ progressBanneer.fileName }}</span>
+  <div class="progress">
+    <div
+      class="progress-bar progress-bar-info progress-bar-striped"
+      role="progressbar"
+      attr.aria-valuenow="{{ progressBanneer.value }}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      [ngStyle]="{ width: progressBanneer.value + '%' }"
+    >
+      {{ progressBanneer.value }}%
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<button
+  type="submit"
+  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded submitComment"
+  [disabled]="!formComment.valid"
+  (click)="onSubmit()"
+>
+  Envoyer
+</button>
+</form>
+<h2 class="title">Commentaires:</h2>
+
+
+<div class="commentBlock" *ngFor="let comment of comments">
+  <div class="mainContent">
+    <div class="commentHeader">
+      <div class="left">
+        <img
+          src="../../../assets/img/defaultAvatar.jpeg"
+          alt="avatar"
+          class="avatar"
+        />
+        <h3 class="user">{{ comment.email }}</h3>
+      </div>
+      <div class="right">
+        <h4 class="date">{{ comment.date | date}}</h4>
+      </div>
+    </div>
+    <div class="commentBody">
+      <p class="comment">
+        {{ comment.comment }}
+      </p>
+    </div>
+  </div>
+  
+  <div class="replyContent" *ngIf="comment.reponse">
+    <div class="mainContent">
+      <div class="commentHeader">
+        <div class="left">
+          <img
+            src="../../../assets/img/defaultAvatar.jpeg"
+            alt="avatar"
+            class="avatar"
+          />
+          <h3 class="user">{{ doctorData.email }}</h3>
+        </div>
+       
+      </div>
+      <div class="commentBody">
+        <p class="comment">
+         {{comment.reponse}}
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div> 

@@ -1,0 +1,105 @@
+<div class="flex flex-wrap mt-4">
+  <div class="w-full mb-12 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 class="font-semibold text-lg text-blueGray-700">
+              Commentaires
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto">
+        <!-- Projects table -->
+        <div class="table-responsive">
+          <mat-form-field appearance="standard">
+            <mat-label>Rechercher...</mat-label>
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Ex. Maskot"
+              class="tableSearch"
+              #input
+            />
+          </mat-form-field>
+          <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+              <td mat-cell *matCellDef="let row">
+                <div class="media align-items-center">
+                  <div class="media-body">
+                    <span class="mb-0 text-sm"> {{ row.email }}</span>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+              <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="comment">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Commentaire
+              </th>
+              <td mat-cell *matCellDef="let row">{{ row.comment }}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-center"
+              >
+                Reponse
+              </th>
+              <td mat-cell *matCellDef="let row">
+                
+
+                <button *ngIf="row.reponse"
+                class="btn btn-secondary actionButton deleteButton " 
+              
+              >
+                <i class="fas fa-sms"></i>
+              </button>
+           
+
+                      <button
+                         *ngIf="!row.reponse"
+                        class="btn btn-secondary actionButton viewButton"
+                     
+                      
+                        (click)="repondre(row.id)"
+                      >
+                        <i class="fas fa-sms"></i>
+                      </button>
+                   
+                  
+              
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data</td>
+            </tr>
+          </table>
+
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page of users"
+          ></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

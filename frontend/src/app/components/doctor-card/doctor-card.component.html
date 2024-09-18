@@ -1,0 +1,37 @@
+<div class="card doctorCard">
+  <div class="cardHeader">
+    <img
+      [src]="data.profilePic"
+      alt="doctor image"
+      class="doctorImage"
+    />
+  </div>
+  <div class="cardBody">
+    <h2 class="doctorName">{{ data.firstName }} {{ data.lastName }}</h2>
+    <p class="speciality">{{ data.speciality }}</p>
+    <ul class="availableInfo">
+      <li><i class="fas fa-map-marker-alt"></i>{{ data.address }}</li>
+      <li><i class="fas fa-phone-alt"></i>{{ data.phone }}</li>
+      <li><i class="fas fa-fax"></i>{{ data.fax }}</li>
+      <!-- <li><i class="far fa-clock"></i> Available on Fri, 22 Mar</li> -->
+      <!-- <li>
+        <i class="far fa-money-bill-alt"></i> $160
+        <a
+          href="javascript:void(0)"
+          tooltip="Lorem Ipsum"
+          placement="top"
+          tabindex="0"
+          ><i class="fas fa-info-circle"></i
+        ></a>
+      </li> -->
+    </ul>
+  </div>
+  <div class="cardFooter d-flex">
+    <button class="btn actionButton viewProfile" [routerLink]="['/profile', data.id]">
+      Consulter Profile
+    </button>
+    <button *ngIf="isConnected" class="btn actionButton book" [routerLink]="['/booking', data.id]">
+      Rendez vous
+    </button>
+  </div>
+</div>

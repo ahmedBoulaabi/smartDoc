@@ -1,0 +1,4 @@
+button:disabled {
+  pointer-events: none;
+  background: #52515175;
+}

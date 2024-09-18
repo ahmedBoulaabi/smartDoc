@@ -1,0 +1,68 @@
+<div class="col-12">
+  <div class="card infoCard">
+    <div class="cardBody">
+      <div class="bookingDocInfo">
+        <a class="bookingDocImg" href="javascript:void(0)"
+          ><img
+            alt="Doctor Image"
+            class="docImage"
+            [src]="profilePicSrc"
+        /></a>
+        <div class="bookingInfo">
+          <h4 class="docName">
+            <a href="javascript:void(0)" [routerLink]="['/profile', doctorId]"
+              >{{ docData?.firstName }} {{ docData?.lastName }}</a
+            >
+          </h4>
+        
+          <p class="text-muted mb-0 address">
+            <i class="fas fa-map-marker-alt"></i>
+            {{ docData.address }}
+          </p>
+        </div>
+      </div>
+      <!---->
+    </div>
+  </div>
+ 
+  <dx-scheduler
+    [dataSource]="dataSource"
+    [views]="views"
+    [currentView]="currentView"
+    [currentDate]="currentDate"
+    [firstDayOfWeek]="0"
+    [startDayHour]="8"
+    [endDayHour]="24"
+    [showAllDayPanel]="false"
+    [height]="600"
+    [maxAppointmentsPerCell]="1"
+    (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
+    (onAppointmentAdding)="onAppointmentAdding($event)"
+    (onAppointmentUpdating)="onAppointmentUpdating($event)"
+  >
+   
+
+    <dxo-editing
+      [allowAdding]="true"
+      [allowDeleting]="false"
+      [allowUpdating]="false"
+      [allowResizing]="false"
+      [allowDragging]="false"
+    ></dxo-editing>
+
+    <div *dxTemplate="let model of 'tooltip-template'">
+      <div class="appointment-tooltip">
+        <div class="appointment-info">
+          <h3 class="appoitmentTitle">
+            {{ getPatientNameById(model.appointmentData.patientId) }}
+          </h3>
+          <p class="appoitmentTime">
+            {{ getFormattedDate(model.appointmentData.startDate) }} -
+            {{ getFormattedDate(model.appointmentData.endDate) }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </dx-scheduler>
+ 
+</div>

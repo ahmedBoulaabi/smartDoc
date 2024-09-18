@@ -1,0 +1,55 @@
+<div class="flex flex-wrap mt-4">
+  <div class="w-full mb-12 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 class="font-semibold text-lg text-blueGray-700">
+              Mes rendez-vous
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto">
+        <dx-scheduler
+          [dataSource]="dataSource"
+          [views]="views"
+          [currentView]="currentView"
+          [currentDate]="currentDate"
+          [firstDayOfWeek]="0"
+          [startDayHour]="8"
+          [endDayHour]="24"
+          [showAllDayPanel]="false"
+          [height]="600"
+          [maxAppointmentsPerCell]="1"
+          (onAppointmentFormOpening)="onAppointmentFormOpening($event)"
+          appointmentTooltipTemplate="tooltip-template"
+        >
+          <dxo-editing
+            [allowAdding]="false"
+            [allowDeleting]="false"
+            [allowUpdating]="false"
+            [allowResizing]="false"
+            [allowDragging]="false"
+          ></dxo-editing>
+
+          <div *dxTemplate="let model of 'tooltip-template'">
+            <div class="appointment-tooltip">
+              <div class="appointment-info">
+                <h3 class="appoitmentTitle">
+                  {{ model.appointmentData.patientFistName }}   {{ model.appointmentData.patientLastName }}
+                </h3>
+                <p class="appoitmentTime">
+                  {{ model.appointmentData.startDate }} -
+                  {{ model.appointmentData.endDate }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </dx-scheduler>
+      </div>
+    </div>
+  </div>
+</div>

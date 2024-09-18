@@ -1,0 +1,103 @@
+<app-auth-navbar></app-auth-navbar>
+<main class="profile-page">
+  <section class="relative block h-500-px">
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80');
+      "
+    >
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-50 bg-black"
+      ></span>
+    </div>
+    <div
+      class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+      style="transform: translateZ(0)"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-blueGray-200 fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="relative py-16 bg-blueGray-200">
+    <div class="mx-auto px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+      >
+        <div class="px-6 pb-20">
+          <div class="flex flex-wrap justify-center">
+            <div class="searchForm">
+              <form [formGroup]="searchForm">
+                <div class="form-group">
+                  <select
+                    name="speciality"
+                    id="speciality"
+                    class="speciality"
+                    formControlName="speciality"
+                  >
+                    <option value="" selected disabled hidden>
+                      Specialité
+                    </option>
+                    <option value="">Tous</option>
+                    <option
+                      *ngFor="let speciality of specialities"
+                      [value]="speciality"
+                    >
+                      {{ speciality }}
+                    </option>
+                  </select>
+                  <input
+                    type="text"
+                    class="searchInput"
+                    formControlName="searchWord"
+                    placeholder="Rechercher..."
+                  />
+                  <!-- <button type="submit" [disabled]="!searchForm.valid">
+                    Search
+                  </button> -->
+                </div>
+              </form>
+            </div>
+            <div class="searchResult">
+              <div class="row listMed" *ngIf="filteredDoctors.length > 0">
+                <div class="listMedContainer">
+                  <!-- grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6  -->
+                  <app-doctor-card
+                    *ngFor="let doc of filteredDoctors"
+                    [data]="doc"
+                  ></app-doctor-card>
+                </div>
+              </div>
+              <div
+                class="noDataFoundContainer text-center"
+                *ngIf="filteredDoctors.length < 1"
+              >
+                <img
+                  src="../../../assets/img/noData.svg"
+                  alt="no data found"
+                  class="noDataImage text-center"
+                />
+                <p class="noDataText text-center">No Data Found</p>
+              </div>
+            </div>
+            <!-- <div id="map" class="map-container"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

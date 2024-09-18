@@ -1,0 +1,134 @@
+<app-auth-navbar></app-auth-navbar>
+<main class="profile-page">
+  <section class="relative block h-500-px">
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80');
+      "
+    >
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-50 bg-black"
+      ></span>
+    </div>
+    <div
+      class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+      style="transform: translateZ(0)"
+    >
+      <svg
+        class="absolute bottom-0 overflow-hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        version="1.1"
+        viewBox="0 0 2560 100"
+        x="0"
+        y="0"
+      >
+        <polygon
+          class="text-blueGray-200 fill-current"
+          points="2560 0 2560 100 0 100"
+        ></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="relative py-16 bg-blueGray-200">
+    <div class="container mx-auto px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+      >
+        <div class="px-6">
+          <div class="flex flex-wrap justify-between">
+            <div class="profileImageName">
+              <div class="imageContent">
+                <img
+                  alt="..."
+                  [src]="profilePicSrc"
+                  class="profileImage"
+                />
+               
+              </div>
+              <!-- class="shadow-xl h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" -->
+              <div class="docNameSpeciality">
+                <h2 class="name">
+                  Dr. {{ docData.firstName }} {{ docData.lastName }}
+                </h2>
+                <p class="speciality">{{ docData?.speciality }}</p>
+              </div>
+            </div>
+            <div class="noteContainer">
+              <h2 class="note">
+                Note <span class="reviewsNumber"></span>
+                <span class="number" *ngIf="isConnected !== 3">3,0</span>
+                <span
+                  class="number"
+                  (click)="openRateDialog()"
+                  *ngIf="isConnected === 3"
+                  >3,0</span
+                >
+              </h2>
+            </div>
+          </div>
+          <hr />
+          <div class="phoneNumberContainer flex items-center justify-between">
+            <h3 class="phone flex items-center">
+              <i class="fas fa-phone-alt"></i>
+              <span>{{ docData?.phone }}</span>
+            </h3>
+          </div>
+          <hr />
+          <div class="workTimeContainer detailContainer" *ngIf="profileTpe === 'gold' && isConnected  === 3" >
+            <i class="fas fa-clock"></i>
+            <div class="content">
+              <h3 class="mainLabel">Heure de travaille</h3>
+              <button class="number" style="width: 20%" [routerLink]="['/booking', docData.id]">
+               Prendre Rendez vous
+              </button>
+            </div>
+          </div>
+          <hr />
+          <div class="addressContainer detailContainer">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="content">
+              <h3 class="mainLabel">Address</h3>
+              <div class="flexContent">
+                <div class="left">
+                  <p class="workTimeText">{{ docData?.address }}</p>
+                </div>
+                <div class="right">
+                  <div id="map" class="map-container"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+         
+          <div class="educationContainer detailContainer" *ngIf="profileTpe === 'gold'">
+            <i class="fas fa-medal"></i>
+            <div class="content">
+              <h3 class="mainLabel">Gallerie</h3>
+
+
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-12/12 px-4">
+                  <owl-carousel-o [options]="customOptions">
+                   
+                    <ng-container *ngFor="let image of images; index">
+                      <ng-template carouselSlide>
+                        <img [src]="image.path" alt="doc image" />
+                      </ng-template>
+                    </ng-container>
+                  </owl-carousel-o>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        
+          <app-comment [doctorId]="doctorId"></app-comment>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

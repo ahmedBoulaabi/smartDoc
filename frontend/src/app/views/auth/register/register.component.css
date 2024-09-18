@@ -1,0 +1,82 @@
+mat-button-toggle {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  border-radius: 8px;
+  font-size: 17px;
+}
+.mat-button-toggle-checked {
+  background: rebeccapurple;
+  color: white !important;
+}
+mat-button-toggle button {
+  outline: none !important;
+}
+mat-button-toggle-group {
+  box-shadow: none !important;
+  display: flex !important;
+  gap: 20px;
+  background: transparent !important;
+  border: none !important;
+  padding: 10px;
+}
+
+.mat-form-field {
+  display: block;
+}
+
+input {
+  /* height: 40px; */
+  outline: none !important;
+  border: none !important;
+  caret-color: transparent !important;
+  box-shadow: none !important;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+}
+.tbody th {
+  text-align: left;
+}
+th {
+  font-weight: 500;
+}
+th {
+  padding-bottom: 20px;
+}
+td {
+  padding-bottom: 10px;
+}
+td div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+input[type="time"] {
+  border-radius: 5px;
+  width: 70px;
+}
+
+input[type="time"]:disabled {
+  background: #ededed;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+/* new */
+
+.stepActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.submit {
+  background: #6767af;
+}

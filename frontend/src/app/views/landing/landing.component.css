@@ -1,0 +1,24 @@
+.ourDoctors {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+}
+
+.doctorsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.doctorsList .seeAll {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}

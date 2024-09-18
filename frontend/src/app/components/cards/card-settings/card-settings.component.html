@@ -1,0 +1,205 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+>
+  <div class="rounded-t bg-white mb-0 px-6 py-6">
+    <div class="text-center flex justify-between">
+      <h6 class="text-blueGray-700 text-xl font-bold">Compte</h6>
+    </div>
+  </div>
+  <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+    <form [formGroup]="infoForm">
+      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+       Information Personnels
+      </h6>
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4">
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              htmlFor="grid-password"
+            >
+           Nom
+            </label>
+            <input
+              type="text"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              formControlName="firstName"
+            />
+          </div>
+        </div>
+        <div class="w-full lg:w-6/12 px-4">
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              htmlFor="grid-password"
+            >
+             Prenom
+            </label>
+            <input
+              type="text"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              formControlName="lastName"
+            />
+          </div>
+        </div>
+        <div class="w-full lg:w-6/12 px-4">
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              htmlFor="grid-password"
+            >
+              Email 
+            </label>
+            <input
+              type="email"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              formControlName="email"
+            />
+          </div>
+        </div>
+        <div class="w-full lg:w-6/12 px-4">
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              htmlFor="grid-password"
+            >
+              Phone
+            </label>
+            <input
+              type="number"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              formControlName="phone"
+            />
+          </div>
+        </div>
+        <div class="w-full lg:w-6/12 px-4">
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              htmlFor="grid-password"
+            >
+              Address
+            </label>
+            <input
+              type="text"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              formControlName="address"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="medecinInfo">
+        <hr class="mt-6 border-b-1 border-blueGray-300" />
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+          Plus d'informations
+        </h6>
+        <div class="flex flex-wrap">
+         
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Specialité
+              </label>
+              <select name="speciality"
+              id="speciality"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+           
+              formControlName="speciality"
+            >
+              <option value="" selected disabled hidden>
+                Specialité
+              </option>
+              <option value="">Tous</option>
+              <option
+                *ngFor="let speciality of specialities"
+                [value]="speciality"
+              >
+                {{ speciality }}
+              </option>
+            </select>
+             
+
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Fax
+              </label>
+              <input
+                type="number"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                formControlName="fax"
+              />
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                URL
+              </label>
+              <input
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                formControlName="url"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+    </form>
+
+    <div class="medecinImages" *ngIf="typeProfile === 'gold'">
+      <hr class="mt-6 border-b-1 border-blueGray-300" />
+
+      <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+        Gallerie
+      </h6>
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-12/12 px-4">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngIf="role === connectedRole">
+              <ng-template carouselSlide>
+                <label for="uploadInput" class="upload" *ngIf="role === connectedRole ">
+                  <i class="fas fa-camera-alt uploadIcon mb-2"></i>
+                  <span>Télecharger Images</span>
+                  <input
+                    type="file"
+                    name="uploadInput"
+                    id="uploadInput"
+                    class="uploadInput"
+                    multiple
+                    (change)="onFileChange($event)"
+                  />
+                </label>
+              </ng-template>
+            </ng-container>
+            <ng-container *ngFor="let image of images; index">
+              <ng-template carouselSlide>
+                <img [src]="image.path" alt="doc image" />
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+    <button
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded saveButton"
+      *ngIf="role === connectedRole "
+      (click)="handleSubmit()"
+    >
+      Confirmer
+    </button>
+  </div>
+</div>

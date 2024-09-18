@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Rate this doctor</h1>
+<div mat-dialog-content>
+  <form [formGroup]="ratingForm" (ngSubmit)="handleSubmit($event)">
+    <div class="stars">
+      <ngx-star-rating formControlName="rate" id="rating"></ngx-star-rating>
+      <!-- [disabled]="true" -->
+    </div>
+    <div class="actionContainer">
+      <button
+        type="button"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cancelButton"
+        mat-button
+        mat-dialog-close
+      >
+        Annuler
+      </button>
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded submitButton"
+        [disabled]="!ratingForm.valid"
+        mat-dialog-close
+      >
+        Envoyer
+      </button>
+    </div>
+  </form>
+  <!-- <ul>
+    <li>
+      <span *ngIf="data.animal === 'panda'">&#10003;</span> Panda
+    </li>
+    <li>
+      <span *ngIf="data.animal === 'unicorn'">&#10003;</span> Unicorn
+    </li>
+    <li>
+      <span *ngIf="data.animal === 'lion'">&#10003;</span> Lion
+    </li>
+  </ul> -->
+</div>

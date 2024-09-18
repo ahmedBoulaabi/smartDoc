@@ -1,0 +1,128 @@
+
+
+.formComment {
+  resize: none;
+  width: 100%;
+  border-radius: 5px;
+  margin: 30px 0;
+}
+
+.submitComment {
+  background: #786789;
+}
+
+.submitComment:disabled {
+  background: #b9b9b9;
+}
+
+.comment {
+  resize: none;
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.title {
+  margin: 30px 0;
+}
+
+
+.commentBlock {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #dbdada;
+}
+
+
+.commentBlock .mainContent {
+  background: #e3e3e3;
+  padding: 15px;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.commentBlock .mainContent .commentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+.date {
+  margin: 0 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+}
+
+.commentBody {
+  padding: 15px 0;
+}
+
+
+.likeIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.respondIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.commentFooter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 0;
+}
+
+
+.reply {
+  resize: none;
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.submitReply {
+  background: #786789;
+}
+
+.submitReply:disabled {
+  background: #b9b9b9;
+}
+
+.replyBox {
+  padding-left: 70px;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s ease;
+}
+.replyBox.show {
+  height: 150px;
+}
+
+.replyContent {
+  padding-left: 70px;
+}
+ 

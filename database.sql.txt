@@ -1,0 +1,92 @@
+create database jameda ;
+
+
+
+
+create table role(
+	    id int(11) AUTO_INCREMENT,
+        type varchar(255) ,
+        PRIMARY KEY (id)
+       
+);
+insert into role( type) values ('medecin');
+insert into role( type) values ('admin');
+insert into role( type) values ('patient');
+
+
+create table member(
+	    id int(11) AUTO_INCREMENT,
+        firstName varchar(255) ,
+        lastName varchar(255) ,
+        email varchar(255) ,
+        phone varchar(255) ,
+        address varchar(255),
+        password varchar(255) ,
+        speciality varchar(255) , 
+        fax varchar(255) ,
+        url varchar(255) ,
+		medecinPackage varchar(255) ,
+		imageMedecin varchar(255) ,
+        status boolean ,
+		disabled boolean default false ,
+		id_role int(11),
+        FOREIGN KEY (id_role) REFERENCES role(id) ON DELETE CASCADE, 
+        PRIMARY KEY (id)
+       
+);
+
+create table comment(
+	  id int(11) AUTO_INCREMENT,
+      id_patient int(11),
+      id_medecin int(11),
+	  date Date,
+	  comment text ,
+	  reponse text , 
+	  preuve varchar(11),
+	    status boolean default false,
+       PRIMARY KEY (id) ,
+       FOREIGN KEY (id_patient) REFERENCES member(id) ON DELETE CASCADE,
+       FOREIGN KEY (id_medecin) REFERENCES member(id) ON DELETE CASCADE
+);
+
+
+create table appointment(
+
+        id int(11) AUTO_INCREMENT,
+        id_patient int(11) ,
+        id_medecin int(11) , 
+        date_debut datetime,
+        date_fin datetime,
+        status boolean default false,
+        PRIMARY KEY (id) ,
+        FOREIGN KEY (id_patient) REFERENCES member(id) ON DELETE CASCADE,
+        FOREIGN KEY (id_medecin ) REFERENCES member(id) ON DELETE CASCADE
+   
+);
+
+
+create table paiement(
+
+        id int(11) AUTO_INCREMENT,
+        id_medecin int(11) , 
+		numero_carte varchar(255),
+		montant float,
+        PRIMARY KEY (id) ,
+        FOREIGN KEY (id_medecin ) REFERENCES member(id) ON DELETE CASCADE
+   
+);
+
+
+create table reclamation(
+	id int(11) AUTO_INCREMENT,
+        email varchar(255),
+        message text,
+        date date ,
+		isarchive boolean default false,
+        PRIMARY KEY (id)
+);
+
+
+
+
+insert into member (id_role , email , password, status ) values (2 , 'admin@gmail.com',  '123456',1) ;

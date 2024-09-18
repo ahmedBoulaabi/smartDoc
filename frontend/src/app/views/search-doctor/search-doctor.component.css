@@ -1,0 +1,98 @@
+.searchForm {
+  width: 100%;
+  background: #484665;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 600px;
+  max-width: 100%;
+  margin: 40px auto 40px;
+  gap: 15px;
+}
+
+.searchInput {
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  color: black;
+}
+
+button {
+  width: 130px;
+  border-radius: 5px;
+  background: rebeccapurple;
+  height: 45px;
+}
+.speciality {
+  border-radius: 5px;
+  height: 45px;
+  max-width: 200px;
+  color: black;
+}
+
+/* map */
+.map-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 5px;
+}
+::ng-deep .marker {
+  background-image: url("../../../assets/img/map-marker.png");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+::ng-deep .mapboxgl-popup {
+  min-width: 160px;
+}
+::ng-deep .mapboxgl-popup h3,
+::ng-deep .mapboxgl-popup p {
+  margin: 0;
+}
+::ng-deep .mapboxgl-popup-close-button {
+  outline: none !important;
+  background: none !important;
+  padding-right: 9px;
+  font-size: 14px;
+}
+
+::ng-deep .mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.noDataImage {
+  height: 300px;
+}
+
+.noDataText {
+  font-size: 17px;
+}
+
+.listMedContainer {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* media queries */
+
+@media (max-width: 1200px) {
+  .listMedContainer {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 920px) {
+  .listMedContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .listMedContainer {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
